@@ -31,14 +31,24 @@ function getChange(amountLeft, denominations, currentIndex = 0) {
 // Dynamic programming
 
 function getMoreChange(amount, denominations) {
-  // Index of waysOfDoing represent the target amount
-  // Values in waysOfDoing represent the number of ways of reaching index val using denominations
+  /*
+Index of waysOfDoing represent the target amount
+[ val   index
+    1 --> 0
+    0 --> 1
+    0 --> 2
+    0 --> 3
+    0 --> 4
+    0 --> 5
+]
+Values in waysOfDoing represent the number of ways of reaching index val using denominations
+  */
   const waysOfDoing = new Array(amount + 1).fill(0);
   // There is always only one way of getting to 0 ---> use no coins!
   waysOfDoing[0] = 1;
 
   denominations.forEach((coin) => {
-    // iterate from coin value to target amount
+    // iterate from coin value (you can never get to an amount less than coin val) to target amount
     for (let higherAmount = coin; higherAmount <= amount; higherAmount += 1) {
       // get the number of ways to get to target using just one of current coin
       const higherAmountRemainder = higherAmount - coin;
