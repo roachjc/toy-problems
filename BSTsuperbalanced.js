@@ -56,11 +56,21 @@ class BSTNode {
     return true;
   }
 
-  depthFirstPre(counter = 0) {
-    if (!this.right && !this.left) counter += 1;
-    if (this.right) this.right.depthFirstPre(counter);
-    if (this.left) this.left.depthFirstPre(counter);
-    return counter;
+  depthFirstPre() {
+    // print leaves
+    if (!this.right && !this.left) console.log(this.value);
+    if (this.right) this.right.depthFirstPre();
+    if (this.left) this.left.depthFirstPre();
+  }
+
+  breadthFirst() {
+    const queue = [this];
+    while (queue.length) {
+      const node = queue.shift();
+      console.log(node.value);
+      if (node.right) queue.push(node.right);
+      if (node.left) queue.push(node.left);
+    }
   }
 }
 
@@ -73,7 +83,8 @@ myBst.add(8);
 myBst.add(15);
 myBst.add(12);
 myBst.add(19);
-console.log(myBst.depthFirstPre());
+myBst.depthFirstPre();
+myBst.breadthFirst();
 
 
 module.exports = BSTNode;
