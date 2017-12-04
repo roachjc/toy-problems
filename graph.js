@@ -1,3 +1,5 @@
+// THIS IS INCOMPLETE / INCORRECT !!
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
