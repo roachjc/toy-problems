@@ -5,6 +5,10 @@
 // getMean()—returns the mean ↴ of all temps we've seen so far
 // getMode()—returns a mode ↴ of all temps we've seen so far
 
+/**
+ * We use an 'ahead-of-time' approach that has the setter do all the work
+ * The getter methods can then access everything in O(1)
+ */
 class TempGuarantee {
   constructor() {
     this.minTemp = null;
@@ -34,7 +38,7 @@ class TempGuarantee {
       this.mode = new Set([temp]);
       this.maxFrequency = this.tempCounts[temp];
     }
-    
+
     // if new temp appears same number of times as max Frequency, add to set
     if (this.tempCounts[temp] === this.maxFrequency) this.mode.add(temp);
   }
