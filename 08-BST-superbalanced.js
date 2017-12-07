@@ -19,7 +19,7 @@ class BSTNode {
     }
   }
 
-  // Check if there are more that 2 unique depths of leaves
+  // Check if there are more than 2 unique depths of leaves
   isBalanced() {
     // if there's no tree it's balanced
     if (!this) return true;
