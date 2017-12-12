@@ -4,7 +4,7 @@ const diamonds = [
   { weight: 2, value: 15 },
 ];
 
-const bagSize = 20;
+const bagSize = 10;
 
 /**
  * Classic dynamic programming problem.
@@ -18,7 +18,7 @@ function maxVal(items, weightCapacity) {
   // Array to store the maxValue at every capacity up to the given weightCapacity
   // The index represents the weight and the value is maxval for that weight
   // So the last index will be the max weight for the given weightCapacity
-  const maxValsAtCapacities = new Array(weightCapacity).fill(0);
+  const maxValsAtCapacities = [new Array(weightCapacity + 1).fill(0)];
 
   // We iterate from capacity of 0 to target capacity and calculate max valye for every capacity in order
   for (let currentCapacity = 0; currentCapacity <= weightCapacity; currentCapacity += 1) {
@@ -28,6 +28,7 @@ function maxVal(items, weightCapacity) {
     // So we iterate through every item for every capacity
     items.forEach((item) => {
       // If the weight is more than the capacity then we can never take it.
+      // Otherwise we see if taking it increases the current value
       if (item.weight <= currentCapacity) {
         // if we were to use the item, then the max value we would be able to achieve would always be
         // the value of the item plus the maximum value available at the total weight minus the item's weight
@@ -41,7 +42,7 @@ function maxVal(items, weightCapacity) {
     maxValsAtCapacities[currentCapacity] = currentMaxValue;
   }
 
-  return maxValsAtCapacities.pop();
+  return maxValsAtCapacities;
 }
 
 
