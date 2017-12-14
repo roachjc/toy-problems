@@ -1,12 +1,12 @@
-
+const Stack = require('./utils/stack');
 /**
  * Implement a Queue using two stacks
  * @class Queue
  */
 class Queue {
   constructor() {
-    this.enQStack = [];
-    this.deQStack = [];
+    this.enQStack = new Stack();
+    this.deQStack = new Stack();
   }
   enqueue(item) {
     // Enqueued items always go onto enqueue stack
@@ -26,7 +26,6 @@ class Queue {
       return this.deQStack.pop();
     }
     // if nothing in either stack then your Queue is empty
-    return null;
+    return undefined;
   }
 }
-
