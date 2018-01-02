@@ -2,7 +2,7 @@
  * The thing to remember here is this is effectively the same as just going through the whole list,
  * getting the length, then going through again to length-k. We are doing exactly the same steps
  * here but just in a different order. Do not be fooled into thinking this way is better!
- * @param {int} k 
+ * @param {int} k
  * @param {node} head
  * @returns {node} kthToLast
  */
